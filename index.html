@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Coad n Cove | High-End Pub</title>
-<meta name="description" content="Coad n Cove — an elevated pub at S010 Senior College. Book a table, browse the menu, find us.">
+<meta name="description" content="Coad n Cove — an elevated pub at S011, Senior College, Tintern Grammar. Book a table, browse the menu, find us.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300;9..144,400;9..144,500;9..144,600;9..144,700&family=Newsreader:ital,wght@0,400;0,500;1,400&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
@@ -69,6 +69,7 @@
   }
   .brandmark{display:flex; align-items:center; gap:10px; text-decoration:none;}
   .brandmark svg{width:30px; height:30px; flex:none;}
+  .brandmark img{width:34px; height:34px; flex:none; border-radius:50%; object-fit:cover;}
   .brandmark span{
     font-family:'IBM Plex Mono', monospace;
     letter-spacing:0.18em;
@@ -223,19 +224,26 @@
     background:var(--card);
   }
   .menu-card h3{
-    font-size:1.3rem; color:var(--brass-soft); margin-bottom:6px;
+    font-size:1.3rem; color:var(--brass-soft); margin-bottom:18px;
   }
-  .menu-card .soon{
-    font-family:'IBM Plex Mono', monospace;
-    font-size:0.75rem; letter-spacing:0.08em; text-transform:uppercase;
-    color:var(--slate); display:block; margin-bottom:18px;
-  }
-  .menu-line{
-    display:flex; align-items:baseline; gap:8px;
-    color:var(--slate); font-style:italic; padding:8px 0;
+  .menu-item{
+    padding:14px 0;
     border-bottom:1px dashed rgba(255,255,255,0.08);
   }
-  .menu-line:last-child{border-bottom:none;}
+  .menu-item:last-child{border-bottom:none;}
+  .menu-item-head{
+    display:flex; justify-content:space-between; align-items:baseline; gap:14px;
+    font-family:'Fraunces', serif; font-weight:500; color:var(--bone); font-size:1.02rem;
+  }
+  .menu-item-head em{color:var(--slate); font-style:italic; font-size:0.9rem;}
+  .menu-item-head .price{
+    font-family:'IBM Plex Mono', monospace; color:var(--brass); font-size:0.92rem; flex:none;
+  }
+  .menu-desc{
+    color:var(--slate); font-style:italic; font-size:0.92rem; margin:6px 0 0;
+  }
+  .menu-promise{background:var(--ink); border-style:dashed;}
+  .menu-promise h3{color:var(--sea);}
 
   /* booking */
   #book{}
@@ -295,11 +303,7 @@
 <header>
   <nav class="wrap">
     <a class="brandmark" href="#top">
-      <svg viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-        <circle cx="20" cy="20" r="19" stroke="#C79A56" stroke-width="1.2"/>
-        <path d="M20 8v18M14 12l6-4 6 4M13 26c1.5 2 3.5 3 7 3s5.5-1 7-3" stroke="#C79A56" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/>
-        <path d="M8 30c2 1.5 4 1.5 6 0s4-1.5 6 0 4 1.5 6 0 4-1.5 6 0" stroke="#6E9C90" stroke-width="1.2" stroke-linecap="round"/>
-      </svg>
+      <img src="logo.png" alt="Coad n Cove crest" width="34" height="34">
       <span>Coad n Cove</span>
     </a>
     <button class="navToggle" id="navToggle" aria-expanded="false" aria-controls="navlinks">Menu</button>
@@ -316,7 +320,7 @@
 
   <section class="hero">
     <div class="wrap">
-      <span class="eyebrow">High-end pub &middot; S010 Senior College</span>
+      <span class="eyebrow">High-end pub &middot; S011, Senior College, Tintern Grammar</span>
       <h1>Coad <em>n</em> Cove</h1>
       <p class="tag">Where the coast meets the bar. Slow evenings, careful pours, and a table worth booking ahead for.</p>
       <div class="cta-row">
@@ -355,27 +359,55 @@
     <div class="wrap">
       <span class="eyebrow">On the pass</span>
       <h2>Menu</h2>
-      <p class="section-intro">The full menu is being finalised — categories are set up below and will be filled in shortly.</p>
+      <p class="section-intro">Friday 28th menu — small, seasonal, and made with care.</p>
       <div class="menu-grid">
         <div class="menu-card">
-          <h3>Starters</h3>
-          <span class="soon">Coming soon</span>
-          <div class="menu-line">Details to follow</div>
+          <h3>Hors d'Oeuvres</h3>
+          <div class="menu-item">
+            <div class="menu-item-head"><span>The Grand Artisan Cheeseboard <em>— House Special</em></span><span class="price">$15</span></div>
+            <p class="menu-desc">Our finest selection of exquisite Blue, Camembert and Brie cheeses, elegantly accompanied by delicate prosciutto, premium salami, fragrant artisanal crackers and luscious fresh grapes.</p>
+          </div>
+          <div class="menu-item">
+            <div class="menu-item-head"><span>Artisanal Hand-Pulled Wheat Batons</span><span class="price">$6</span></div>
+            <p class="menu-desc">Delicately baked rods of premium wheat, hand selected for structural integrity and optimal crunch.</p>
+          </div>
+          <div class="menu-item">
+            <div class="menu-item-head"><span>German-Inspired Salted Dough Parcels</span><span class="price">$5</span></div>
+            <p class="menu-desc">Individually sculpted morsels of golden dough, finished with an elegant dusting of mineral salt.</p>
+          </div>
         </div>
+
         <div class="menu-card">
-          <h3>Mains</h3>
-          <span class="soon">Coming soon</span>
-          <div class="menu-line">Details to follow</div>
+          <h3>Signature Mains</h3>
+          <div class="menu-item">
+            <div class="menu-item-head"><span>Gourmet Roast Chicken Sliders</span><span class="price">$12</span></div>
+            <p class="menu-desc">Tender roast chicken nestled in soft, golden slider buns, layered with crisp garden lettuce and silky mayonnaise for an indulgent yet refined bite.</p>
+          </div>
+          <div class="menu-item">
+            <div class="menu-item-head"><span>Artisan Ham &amp; Gruy&egrave;re Croissants</span><span class="price">$10</span></div>
+            <p class="menu-desc">Buttery, flaky croissants filled with premium ham and smooth, creamy cheese for an elegant and satisfying bite.</p>
+          </div>
         </div>
+
         <div class="menu-card">
-          <h3>From the Bar</h3>
-          <span class="soon">Coming soon</span>
-          <div class="menu-line">Details to follow</div>
+          <h3>Accompaniments &amp; Beverage Selection</h3>
+          <div class="menu-item">
+            <div class="menu-item-head"><span>Crisp Maize Shards &amp; Rustic Tomato Reduction</span><span class="price">$8</span></div>
+            <p class="menu-desc">Hand-selected corn shards served alongside a vibrant Mexican-inspired tomato and pepper composition.</p>
+          </div>
+          <div class="menu-item">
+            <div class="menu-item-head"><span>The Artisanal Single-Origin Carbonated Reserve</span><span class="price">$6</span></div>
+            <p class="menu-desc">A curated trio of chilled pours: crisp botanical citrus press, oak-aged caramelized cola, and ruby vanilla cream nectar, each served over ice with a fresh citrus wheel.</p>
+          </div>
+          <div class="menu-item">
+            <div class="menu-item-head"><span>Bassetts Creek Vintage ('26)</span><span class="price">$9</span></div>
+            <p class="menu-desc">A dark, murky blend of sun-drenched citrus press, caramelized botanical cola, and red vanilla cream nectar, served over hand-chipped ice with a citrus twist.</p>
+          </div>
         </div>
-        <div class="menu-card">
-          <h3>Puddings</h3>
-          <span class="soon">Coming soon</span>
-          <div class="menu-line">Details to follow</div>
+
+        <div class="menu-card menu-promise">
+          <h3>Our Promise</h3>
+          <p class="menu-desc" style="margin-top:6px;">At our pub, we promise to serve quality, flavour and hospitality in every bite. From our generous cheeseboards, fresh sliders and carefully selected accompaniments, we use quality ingredients to create food that is made with care.</p>
         </div>
       </div>
     </div>
@@ -442,20 +474,20 @@
         <h2>Come by</h2>
         <div class="find-item">
           <span class="k">Address</span>
-          <span class="v">S010 Senior College</span>
+          <span class="v">S011 - Senior College, Tintern Grammar</span>
         </div>
         <div class="find-item">
           <span class="k">Bookings</span>
-          <span class="v"><a href="mailto:zaciser25@gmail.com">zaciser25@gmail.com</a></span>
+          <span class="v"><a href="mailto:bookingscoadncanvas@gmail.com">bookingscoadncanvas@gmail.com</a></span>
         </div>
         <div class="find-item">
           <span class="k">Phone</span>
-          <span class="v">Coming soon</span>
+          <span class="v">0493 515 841</span>
         </div>
       </div>
       <div class="map-frame">
         <iframe
-          src="https://www.google.com/maps?q=S010%20Senior%20College&output=embed"
+          src="https://www.google.com/maps?q=Tintern%20Grammar%20Senior%20College&output=embed"
           loading="lazy"
           referrerpolicy="no-referrer-when-downgrade"
           title="Map to Coad n Cove"></iframe>
@@ -466,7 +498,7 @@
 </main>
 
 <footer>
-  <div class="wrap">Coad n Cove &middot; S010 Senior College &middot; bookings: zaciser25@gmail.com</div>
+  <div class="wrap">Coad n Cove &middot; S011, Senior College, Tintern Grammar &middot; 0493 515 841 &middot; bookings: bookingscoadncanvas@gmail.com</div>
 </footer>
 
 <script>
@@ -511,7 +543,7 @@
     ];
     const body = bodyLines.join('\n');
 
-    const mailto = `mailto:zaciser25@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+    const mailto = `mailto:bookingscoadncanvas@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
     window.location.href = mailto;
 
     confirmMsg.classList.add('show');
