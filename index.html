@@ -1,0 +1,522 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Coad n Cove | High-End Pub</title>
+<meta name="description" content="Coad n Cove — an elevated pub at S010 Senior College. Book a table, browse the menu, find us.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300;9..144,400;9..144,500;9..144,600;9..144,700&family=Newsreader:ital,wght@0,400;0,500;1,400&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ink:#0B1A22;
+    --ink-deep:#060F14;
+    --brass:#C79A56;
+    --brass-soft:#E4C889;
+    --sea:#6E9C90;
+    --bone:#F1E9D8;
+    --slate:#92A5AC;
+    --card:#122733;
+    --card-line: rgba(199,154,86,0.25);
+    --maxw: 1100px;
+  }
+
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0;
+    background:var(--ink);
+    color:var(--bone);
+    font-family:'Newsreader', serif;
+    line-height:1.6;
+    -webkit-font-smoothing:antialiased;
+  }
+
+  h1,h2,h3{
+    font-family:'Fraunces', serif;
+    font-weight:600;
+    margin:0;
+    letter-spacing:-0.01em;
+  }
+
+  .eyebrow{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:0.72rem;
+    letter-spacing:0.22em;
+    text-transform:uppercase;
+    color:var(--brass);
+  }
+
+  a{color:var(--sea);}
+  a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visible, select:focus-visible{
+    outline:2px solid var(--brass-soft);
+    outline-offset:3px;
+  }
+
+  .wrap{max-width:var(--maxw); margin:0 auto; padding:0 24px;}
+
+  /* ---------- NAV ---------- */
+  header{
+    position:sticky; top:0; z-index:50;
+    background:rgba(6,15,20,0.86);
+    backdrop-filter:blur(10px);
+    border-bottom:1px solid var(--card-line);
+  }
+  nav.wrap{
+    display:flex; align-items:center; justify-content:space-between;
+    padding-top:14px; padding-bottom:14px;
+  }
+  .brandmark{display:flex; align-items:center; gap:10px; text-decoration:none;}
+  .brandmark svg{width:30px; height:30px; flex:none;}
+  .brandmark span{
+    font-family:'IBM Plex Mono', monospace;
+    letter-spacing:0.18em;
+    font-size:0.82rem;
+    color:var(--bone);
+    text-transform:uppercase;
+  }
+  .navlinks{display:flex; gap:28px; list-style:none; margin:0; padding:0;}
+  .navlinks a{
+    color:var(--slate);
+    text-decoration:none;
+    font-family:'IBM Plex Mono', monospace;
+    font-size:0.74rem;
+    letter-spacing:0.12em;
+    text-transform:uppercase;
+    transition:color .2s ease;
+  }
+  .navlinks a:hover{color:var(--brass-soft);}
+  .navToggle{display:none;}
+  @media (max-width:720px){
+    .navlinks{
+      position:absolute; top:100%; left:0; right:0;
+      background:var(--ink-deep);
+      flex-direction:column; gap:0;
+      padding:8px 24px 18px;
+      border-bottom:1px solid var(--card-line);
+      display:none;
+    }
+    .navlinks.open{display:flex;}
+    .navlinks a{padding:12px 0; border-bottom:1px solid rgba(255,255,255,0.06);}
+    .navToggle{
+      display:inline-flex; background:none; border:1px solid var(--card-line);
+      color:var(--bone); border-radius:6px; padding:8px 10px; cursor:pointer;
+      font-family:'IBM Plex Mono', monospace; font-size:0.7rem; letter-spacing:0.1em;
+    }
+  }
+
+  /* ---------- HERO ---------- */
+  .hero{
+    position:relative;
+    padding:120px 0 90px;
+    overflow:hidden;
+    background:
+      radial-gradient(ellipse at 20% -10%, rgba(199,154,86,0.14), transparent 55%),
+      radial-gradient(ellipse at 90% 10%, rgba(110,156,144,0.14), transparent 50%),
+      var(--ink);
+  }
+  .hero .eyebrow{margin-bottom:18px; display:block;}
+  .hero h1{
+    font-size:clamp(3rem, 8vw, 6rem);
+    line-height:0.96;
+    color:var(--bone);
+  }
+  .hero h1 em{
+    font-style:italic;
+    color:var(--brass-soft);
+  }
+  .hero p.tag{
+    max-width:520px;
+    margin-top:22px;
+    font-size:1.15rem;
+    color:var(--slate);
+  }
+  .hero .cta-row{
+    margin-top:38px;
+    display:flex; gap:16px; flex-wrap:wrap;
+  }
+
+  .btn{
+    display:inline-block;
+    font-family:'IBM Plex Mono', monospace;
+    font-size:0.78rem;
+    letter-spacing:0.12em;
+    text-transform:uppercase;
+    text-decoration:none;
+    padding:15px 26px;
+    border-radius:2px;
+    transition:transform .15s ease, background .2s ease, color .2s ease;
+    cursor:pointer;
+    border:1px solid transparent;
+  }
+  .btn-primary{background:var(--brass); color:var(--ink-deep);}
+  .btn-primary:hover{background:var(--brass-soft); transform:translateY(-1px);}
+  .btn-ghost{border-color:var(--card-line); color:var(--bone);}
+  .btn-ghost:hover{border-color:var(--brass); color:var(--brass-soft);}
+
+  /* ---------- WAVE DIVIDER (signature element) ---------- */
+  .wave-divider{
+    position:relative; height:64px; overflow:hidden;
+    background:var(--ink);
+  }
+  .wave-divider svg{
+    position:absolute; top:0; left:0;
+    width:200%; height:100%;
+    animation: drift 22s linear infinite;
+  }
+  @keyframes drift{
+    from{ transform:translateX(0); }
+    to{ transform:translateX(-50%); }
+  }
+  @media (prefers-reduced-motion: reduce){
+    .wave-divider svg{animation:none;}
+  }
+
+  /* ---------- SECTIONS ---------- */
+  section{padding:90px 0;}
+  section .eyebrow{display:block; margin-bottom:14px;}
+  section h2{font-size:clamp(2rem, 4vw, 2.8rem); margin-bottom:20px;}
+  .section-intro{max-width:620px; color:var(--slate); font-size:1.05rem;}
+
+  /* about */
+  .about-grid{
+    display:grid; grid-template-columns:1.1fr 0.9fr; gap:60px; margin-top:50px;
+  }
+  @media (max-width:820px){.about-grid{grid-template-columns:1fr;}}
+  .about-copy p{color:var(--bone); font-size:1.05rem; max-width:520px;}
+
+  /* harbour board (hours) — signature structural device */
+  .board{
+    background:var(--ink-deep);
+    border:1px solid var(--card-line);
+    border-radius:4px;
+    padding:26px 26px 10px;
+  }
+  .board-title{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:0.72rem; letter-spacing:0.2em; text-transform:uppercase;
+    color:var(--brass); margin-bottom:18px; display:block;
+  }
+  .board-row{
+    display:flex; justify-content:space-between;
+    font-family:'IBM Plex Mono', monospace;
+    font-size:0.92rem;
+    color:var(--bone);
+    padding:12px 0;
+    border-bottom:1px dashed rgba(199,154,86,0.22);
+    letter-spacing:0.03em;
+  }
+  .board-row:last-child{border-bottom:none;}
+  .board-row .day{color:var(--slate);}
+
+  /* menu */
+  #menu{background:var(--ink-deep);}
+  .menu-grid{
+    display:grid; grid-template-columns:repeat(2, 1fr); gap:28px; margin-top:50px;
+  }
+  @media (max-width:720px){.menu-grid{grid-template-columns:1fr;}}
+  .menu-card{
+    border:1px solid var(--card-line);
+    border-radius:4px;
+    padding:30px 28px;
+    background:var(--card);
+  }
+  .menu-card h3{
+    font-size:1.3rem; color:var(--brass-soft); margin-bottom:6px;
+  }
+  .menu-card .soon{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:0.75rem; letter-spacing:0.08em; text-transform:uppercase;
+    color:var(--slate); display:block; margin-bottom:18px;
+  }
+  .menu-line{
+    display:flex; align-items:baseline; gap:8px;
+    color:var(--slate); font-style:italic; padding:8px 0;
+    border-bottom:1px dashed rgba(255,255,255,0.08);
+  }
+  .menu-line:last-child{border-bottom:none;}
+
+  /* booking */
+  #book{}
+  .book-grid{display:grid; grid-template-columns:1fr 1fr; gap:60px; margin-top:50px; align-items:start;}
+  @media (max-width:820px){.book-grid{grid-template-columns:1fr;}}
+  form{display:flex; flex-direction:column; gap:18px;}
+  .field{display:flex; flex-direction:column; gap:8px;}
+  .field label{
+    font-family:'IBM Plex Mono', monospace; font-size:0.72rem;
+    letter-spacing:0.1em; text-transform:uppercase; color:var(--slate);
+  }
+  .field input, .field select, .field textarea{
+    background:var(--card);
+    border:1px solid var(--card-line);
+    color:var(--bone);
+    padding:13px 14px;
+    border-radius:3px;
+    font-family:'Newsreader', serif;
+    font-size:1rem;
+  }
+  .row-2{display:grid; grid-template-columns:1fr 1fr; gap:16px;}
+  @media (max-width:480px){.row-2{grid-template-columns:1fr;}}
+  .field textarea{resize:vertical; min-height:90px;}
+  .form-note{color:var(--slate); font-size:0.9rem; margin-top:4px;}
+  .confirm{
+    display:none; margin-top:16px; padding:14px 16px;
+    border:1px solid var(--sea); border-radius:4px;
+    color:var(--sea); font-family:'IBM Plex Mono', monospace; font-size:0.85rem;
+  }
+  .confirm.show{display:block;}
+
+  /* find us */
+  #find{background:var(--ink-deep);}
+  .find-grid{display:grid; grid-template-columns:0.9fr 1.1fr; gap:50px; margin-top:50px;}
+  @media (max-width:820px){.find-grid{grid-template-columns:1fr;}}
+  .find-item{margin-bottom:26px;}
+  .find-item .k{
+    font-family:'IBM Plex Mono', monospace; font-size:0.72rem;
+    letter-spacing:0.1em; text-transform:uppercase; color:var(--brass); display:block; margin-bottom:6px;
+  }
+  .find-item .v{color:var(--bone); font-size:1.1rem;}
+  .map-frame{
+    border:1px solid var(--card-line); border-radius:4px; overflow:hidden;
+    aspect-ratio:4/3; background:var(--card);
+  }
+  .map-frame iframe{width:100%; height:100%; border:0; filter:grayscale(0.3) contrast(1.05);}
+
+  footer{
+    padding:40px 0; text-align:center;
+    border-top:1px solid var(--card-line);
+    color:var(--slate); font-family:'IBM Plex Mono', monospace; font-size:0.75rem; letter-spacing:0.06em;
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <nav class="wrap">
+    <a class="brandmark" href="#top">
+      <svg viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+        <circle cx="20" cy="20" r="19" stroke="#C79A56" stroke-width="1.2"/>
+        <path d="M20 8v18M14 12l6-4 6 4M13 26c1.5 2 3.5 3 7 3s5.5-1 7-3" stroke="#C79A56" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/>
+        <path d="M8 30c2 1.5 4 1.5 6 0s4-1.5 6 0 4 1.5 6 0 4-1.5 6 0" stroke="#6E9C90" stroke-width="1.2" stroke-linecap="round"/>
+      </svg>
+      <span>Coad n Cove</span>
+    </a>
+    <button class="navToggle" id="navToggle" aria-expanded="false" aria-controls="navlinks">Menu</button>
+    <ul class="navlinks" id="navlinks">
+      <li><a href="#top">Home</a></li>
+      <li><a href="#menu">Menu</a></li>
+      <li><a href="#book">Book a Table</a></li>
+      <li><a href="#find">Find Us</a></li>
+    </ul>
+  </nav>
+</header>
+
+<main id="top">
+
+  <section class="hero">
+    <div class="wrap">
+      <span class="eyebrow">High-end pub &middot; S010 Senior College</span>
+      <h1>Coad <em>n</em> Cove</h1>
+      <p class="tag">Where the coast meets the bar. Slow evenings, careful pours, and a table worth booking ahead for.</p>
+      <div class="cta-row">
+        <a class="btn btn-primary" href="#book">Book a table</a>
+        <a class="btn btn-ghost" href="#menu">View the menu</a>
+      </div>
+    </div>
+  </section>
+
+  <div class="wave-divider" aria-hidden="true">
+    <svg viewBox="0 0 800 60" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M0 30 C 50 10, 100 50, 150 30 S 250 10, 300 30 S 400 50, 450 30 S 550 10, 600 30 S 700 50, 750 30 S 800 30, 800 30 L 800 60 L 0 60 Z" fill="#122733"/>
+      <path d="M400 30 C 450 10, 500 50, 550 30 S 650 10, 700 30 S 800 50, 850 30 S 950 10, 1000 30 S 1100 50, 1150 30 S 1200 30, 1200 30 L 1200 60 L 400 60 Z" fill="#122733"/>
+    </svg>
+  </div>
+
+  <section id="about">
+    <div class="wrap about-grid">
+      <div class="about-copy">
+        <span class="eyebrow">About</span>
+        <h2>An upscale pub built around the tide.</h2>
+        <p>Coad n Cove pairs a considered drinks list with fresh, seasonal plates in a room made for lingering. Whether it's a quiet pint after work or a table for a celebration, we hold a spot for you when you book ahead.</p>
+        <p>Walk-ins are welcome as space allows, but for evenings and weekends we'd recommend reserving your table below.</p>
+      </div>
+      <div class="board">
+        <span class="board-title">Harbour Hours</span>
+        <div class="board-row"><span class="day">Mon &ndash; Tue</span><span>Closed</span></div>
+        <div class="board-row"><span class="day">Wed &ndash; Thu</span><span>4:00pm &ndash; 11:00pm</span></div>
+        <div class="board-row"><span class="day">Fri &ndash; Sat</span><span>12:00pm &ndash; 1:00am</span></div>
+        <div class="board-row"><span class="day">Sun</span><span>12:00pm &ndash; 9:00pm</span></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="menu">
+    <div class="wrap">
+      <span class="eyebrow">On the pass</span>
+      <h2>Menu</h2>
+      <p class="section-intro">The full menu is being finalised — categories are set up below and will be filled in shortly.</p>
+      <div class="menu-grid">
+        <div class="menu-card">
+          <h3>Starters</h3>
+          <span class="soon">Coming soon</span>
+          <div class="menu-line">Details to follow</div>
+        </div>
+        <div class="menu-card">
+          <h3>Mains</h3>
+          <span class="soon">Coming soon</span>
+          <div class="menu-line">Details to follow</div>
+        </div>
+        <div class="menu-card">
+          <h3>From the Bar</h3>
+          <span class="soon">Coming soon</span>
+          <div class="menu-line">Details to follow</div>
+        </div>
+        <div class="menu-card">
+          <h3>Puddings</h3>
+          <span class="soon">Coming soon</span>
+          <div class="menu-line">Details to follow</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="book">
+    <div class="wrap book-grid">
+      <div>
+        <span class="eyebrow">Reservations</span>
+        <h2>Book a table</h2>
+        <p class="section-intro">Fill in your details and hit send — this opens your email app with the booking request ready to go to Coad n Cove.</p>
+      </div>
+      <div>
+        <form id="bookingForm">
+          <div class="row-2">
+            <div class="field">
+              <label for="name">Name</label>
+              <input type="text" id="name" required>
+            </div>
+            <div class="field">
+              <label for="phone">Phone</label>
+              <input type="tel" id="phone" required>
+            </div>
+          </div>
+          <div class="field">
+            <label for="email">Email</label>
+            <input type="email" id="email" required>
+          </div>
+          <div class="row-2">
+            <div class="field">
+              <label for="date">Date</label>
+              <input type="date" id="date" required>
+            </div>
+            <div class="field">
+              <label for="time">Time</label>
+              <input type="time" id="time" required>
+            </div>
+          </div>
+          <div class="field">
+            <label for="guests">Party size</label>
+            <select id="guests" required>
+              <option value="">Select</option>
+              <option>1</option><option>2</option><option>3</option><option>4</option>
+              <option>5</option><option>6</option><option>7</option><option>8</option>
+              <option>9+ (please note in message)</option>
+            </select>
+          </div>
+          <div class="field">
+            <label for="notes">Occasion / notes (optional)</label>
+            <textarea id="notes" placeholder="Anniversary, dietary needs, seating preference..."></textarea>
+          </div>
+          <button type="submit" class="btn btn-primary">Send booking request</button>
+          <p class="form-note">This will open your default email app addressed to Coad n Cove with your details filled in — just hit send from there.</p>
+          <div class="confirm" id="confirmMsg">Your email app should now be open with the booking request ready to send.</div>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <section id="find">
+    <div class="wrap find-grid">
+      <div>
+        <span class="eyebrow">Find us</span>
+        <h2>Come by</h2>
+        <div class="find-item">
+          <span class="k">Address</span>
+          <span class="v">S010 Senior College</span>
+        </div>
+        <div class="find-item">
+          <span class="k">Bookings</span>
+          <span class="v"><a href="mailto:zaciser25@gmail.com">zaciser25@gmail.com</a></span>
+        </div>
+        <div class="find-item">
+          <span class="k">Phone</span>
+          <span class="v">Coming soon</span>
+        </div>
+      </div>
+      <div class="map-frame">
+        <iframe
+          src="https://www.google.com/maps?q=S010%20Senior%20College&output=embed"
+          loading="lazy"
+          referrerpolicy="no-referrer-when-downgrade"
+          title="Map to Coad n Cove"></iframe>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <div class="wrap">Coad n Cove &middot; S010 Senior College &middot; bookings: zaciser25@gmail.com</div>
+</footer>
+
+<script>
+  // mobile nav toggle
+  const navToggle = document.getElementById('navToggle');
+  const navlinks = document.getElementById('navlinks');
+  navToggle.addEventListener('click', () => {
+    const isOpen = navlinks.classList.toggle('open');
+    navToggle.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+  });
+  navlinks.querySelectorAll('a').forEach(a => a.addEventListener('click', () => {
+    navlinks.classList.remove('open');
+    navToggle.setAttribute('aria-expanded', 'false');
+  }));
+
+  // booking form -> mailto
+  const form = document.getElementById('bookingForm');
+  const confirmMsg = document.getElementById('confirmMsg');
+
+  form.addEventListener('submit', function(e){
+    e.preventDefault();
+
+    const name = document.getElementById('name').value.trim();
+    const phone = document.getElementById('phone').value.trim();
+    const email = document.getElementById('email').value.trim();
+    const date = document.getElementById('date').value;
+    const time = document.getElementById('time').value;
+    const guests = document.getElementById('guests').value;
+    const notes = document.getElementById('notes').value.trim();
+
+    const subject = `Booking Request - Coad n Cove (${name})`;
+    const bodyLines = [
+      `New table booking request from the Coad n Cove website:`,
+      ``,
+      `Name: ${name}`,
+      `Phone: ${phone}`,
+      `Email: ${email}`,
+      `Date: ${date}`,
+      `Time: ${time}`,
+      `Party size: ${guests}`,
+      `Notes: ${notes || '—'}`
+    ];
+    const body = bodyLines.join('\n');
+
+    const mailto = `mailto:zaciser25@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+    window.location.href = mailto;
+
+    confirmMsg.classList.add('show');
+  });
+</script>
+
+</body>
+</html>
